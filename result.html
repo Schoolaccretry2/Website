@@ -1,0 +1,30 @@
+<script>
+function getAllCookies() {
+  const cookies = document.cookie.split("; ");
+  const result = {};
+
+  for (let c of cookies) {
+    const [key, value] = c.split("=");
+    result[key] = value;
+  }
+
+  return result;
+}
+
+function sumCookieValues() {
+  const cookies = getAllCookies();
+  let sum = 0;
+
+  for (let key in cookies) {
+    let val = parseFloat(cookies[key]);
+    if (!isNaN(val)) {
+      sum += val;
+    }
+  }
+
+  return sum;
+}
+
+const total = sumCookieValues();
+console.log(total);
+</script>
