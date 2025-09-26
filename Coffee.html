@@ -1,7 +1,14 @@
 <script>
-let cookies = document.cookie;
-if (!cookies.includes("coffee=")) {
+function getCookie(name) {
+  const cookies = document.cookie.split("; ");
+  for (let c of cookies) {
+    const [key, value] = c.split("=");
+    if (key === name) return value;
+  }
+  return null;
+}
+
+if (!getCookie("coffee")) {
   document.cookie = "coffee=2.25";
 }
 </script>
-
